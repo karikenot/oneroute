@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Oneroute;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class OnerouteController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -33,14 +35,12 @@ class OnerouteController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'message' => 'required|string|max:255'
         ]);
 
-
-        Oneroute::create([
-            'message' => $validated['message'],
-        ]);
+        auth()->user()->oneroutes()->create($validated);
 
         return redirect('/')->with('success', 'Route created!');
     }
@@ -58,6 +58,8 @@ class OnerouteController extends Controller
      */
     public function edit(Oneroute $oneroute)
     {
+        $this->authorize('update', $oneroute);
+
         return view('oneroutes.edit', compact('oneroute'));
     }
 
@@ -66,6 +68,9 @@ class OnerouteController extends Controller
      */
     public function update(Request $request, Oneroute $oneroute)
     {
+
+        $this->authorize('update', $oneroute);
+
         $validated = $request->validate([
             'message' => 'required|string|max:255'
         ]);
@@ -81,6 +86,8 @@ class OnerouteController extends Controller
      */
     public function destroy(Oneroute $oneroute)
     {
+        $this->authorize('update', $oneroute);
+
         $oneroute->delete();
 
         return redirect('/')->with('success', 'Route deleted!');

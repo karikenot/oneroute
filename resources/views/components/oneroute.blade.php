@@ -29,20 +29,15 @@
                         <span class="text-sm text-base-content/60">{{ $oneroute->created_at->diffForHumans() }}</span>
                     </div>
 
-                    <div class="flex gap-1">
-                        <a href="/oneroutes/{{ $oneroute->id }}/edit" class="btn btn-ghost btn-xs">
-                            Edit
-                        </a>
-                        <form method="POST" action="/oneroutes/{{ $oneroute->id }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                onclick="return confirm('Are you sure you want to delete this route?')"
-                                class="btn btn-ghost btn-xs text-error">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
+                    @can('update', $oneroute)
+                        <div class="flex gap-1">
+                            <a href="/oneroutes/{{ $oneroute->id }}/edit" class="btn btn-ghost btn-xs"> Edit </a>
+                            <form method="POST" action="/oneroutes/{{ $oneroute->id }}"> @csrf @method('DELETE') <button
+                                    type="submit" onclick="return confirm('Are you sure you want to delete this route?')"
+                                    class="btn btn-ghost btn-xs text-error"> Delete </button>
+                            </form>
+                        </div>
+                    @endcan
                 </div>
                 <p class="mt-1">{{ $oneroute->message }}</p>
             </div>
