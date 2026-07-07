@@ -44,7 +44,7 @@
                             </div>
                         @enderror
 
-                        <!-- Remember Me -->
+                        <!-- this is tempoary please look into this thing -->
                         <div class="form-control mt-4">
                             <label class="label cursor-pointer justify-start">
                                 <input type="checkbox"
