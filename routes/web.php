@@ -8,3 +8,5 @@ Route::post('/oneroutes', [OnerouteController::class, 'store']);
 Route::get('/oneroutes/{oneroute}/edit', [OnerouteController::class, 'edit']);
 Route::put('/oneroutes/{oneroute}', [OnerouteController::class, 'update']);
 Route::delete('/oneroutes/{oneroute}', [OnerouteController::class, 'destroy']);
+
+Route::view('/register', 'auth.register');
