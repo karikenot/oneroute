@@ -79,8 +79,10 @@ class OnerouteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Oneroute $oneroute)
     {
-        //
+        $oneroute->delete();
+
+        return redirect('/')->with('success', 'Route deleted!');
     }
 }
