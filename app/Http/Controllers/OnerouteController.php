@@ -33,7 +33,16 @@ class OnerouteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255'
+        ]);
+
+
+        Oneroute::create([
+            'message' => $validated['message'],
+        ]);
+
+        return redirect('/')->with('success', 'Route created!');
     }
 
     /**
