@@ -27,6 +27,10 @@
                         <span class="text-sm font-semibold">{{ $oneroute->user ? $oneroute->user->name : 'Anonymous' }}</span>
                         <span class="text-base-content/60">·</span>
                         <span class="text-sm text-base-content/60">{{ $oneroute->created_at->diffForHumans() }}</span>
+                        @if ($oneroute->updated_at->gt($oneroute->created_at->addSeconds(5)))
+                            <span class="text-base-content/60">·</span>
+                            <span class="text-sm text-base-content/60 italic">edited</span>
+                        @endif
                     </div>
 
                     <div class="flex gap-1">
