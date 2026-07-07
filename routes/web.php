@@ -27,3 +27,5 @@ Route::post('/register', Register::class)
 //LOGOUT
 Route::post('/logout', Logout::class)
     ->middleware('auth');
+
+// LOGIN SHITSFUCK
