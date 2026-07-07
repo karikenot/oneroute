@@ -5,6 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [OnerouteController::class, 'index']);
 Route::post('/oneroutes', [OnerouteController::class, 'store']);
-Route::get('/oneroutes/{oneroute}/edit');
-Route::put('/oneroute/{oneroute}');
-Route::delete('/oneroute/{oneroute}');
+Route::get('/oneroutes/{oneroute}/edit', [OnerouteController::class, 'edit']);
+Route::put('/oneroutes/{oneroute}', [OnerouteController::class, 'update']);
+Route::delete('/oneroute/{oneroute}', [OnerouteController::class, 'destroy']);

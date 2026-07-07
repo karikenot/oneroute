@@ -56,17 +56,24 @@ class OnerouteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Oneroute $oneroute)
     {
-        //
+        return view('oneroutes.edit', compact('oneroute'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Oneroute $oneroute)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255'
+        ]);
+
+
+        $oneroute->update($validated);
+
+        return redirect('/')->with('success', 'Route updated!');
     }
 
     /**
